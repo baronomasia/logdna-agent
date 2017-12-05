@@ -30,6 +30,7 @@
     "is-administrator": "^1.0.1",
     "lodash": "^3.10.1",
     "macaddress": "^0.2.8",
+    "node-docker-api": "^1.1.18",
     "properties": "^1.2.1",
     "request": "^2.71.0",
     "utf-8-validate": "^1.2.1",

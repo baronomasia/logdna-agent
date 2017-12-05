@@ -10,8 +10,8 @@ spec:
     spec:
       containers:
       - name: logdna-agent
-        image: logdna/logdna-agent:latest
-        imagePullPolicy: Always
+        image: 267460048499.dkr.ecr.us-west-2.amazonaws.com/logdna-agent:latest
+        imagePullPolicy: IfNotPresent
         env:
           - name: LOGDNA_AGENT_KEY
             valueFrom:

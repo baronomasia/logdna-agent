@@ -1,12 +1,18 @@
-FROM ubuntu
+# Use the alpine node runtime as a parent image
+FROM mhart/alpine-node:6.11.3
 
+# List the maintainer
 MAINTAINER Lee Liu <lee@logdna.com>
 
-COPY logdna.gpg /etc/
+# Install dependencies
+RUN apk add -qU \
+  git \
+  g++ \
+  make \
+  python
 
-RUN echo "deb http://repo.logdna.com stable main" > /etc/apt/sources.list.d/logdna.list && \
-    apt-key add /etc/logdna.gpg && \
-    apt-get -y update && \
-    apt-get -y install logdna-agent
-
-CMD ["/usr/bin/logdna-agent"]
+# Configure logdna-agent
+WORKDIR /opt/logdna-agent
+ADD logdna-agent .
+RUN npm install
+CMD node index.js
